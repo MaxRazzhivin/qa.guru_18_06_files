@@ -1,5 +1,24 @@
 # Работа с файлами 
 
+
+## Добавляем код, чтобы файл скачивался в определенную папку в проекте
+
+```bash
+- создаем папку для файлов tmp 
+
+options = webdriver.ChromeOptions() // import из Selenium webdriver
+prefs = {
+  'download.default_directory': '/Users/maxnovo/Desktop/qa.guru/qa.guru_18_06/tmp', // директория по-умолчанию для файлов
+  'download.prompt_for_download' = False // опция чтобы не спрашивало подтверждения на скачивание 
+}
+
+options.add_experimental_option('prefs', prefs)
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options = options) // здесь скачиваем вебдрайвер и options - кастомизированная часть настроек для него
+
+browser.config.driver = driver
+```
+
 ## Как скачать файл в нужную директорию
 
 Пример теста для скачивания файлов для версии Selene 2.0.0rc6 и выше. В тесте указан путь как абсолютный.
